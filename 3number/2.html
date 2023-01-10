@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="CANS CANS NUMBER provides Number Game, Flashcards and 123 Chart.">
+<meta name="keywords" content="CANS CANS, Color, Alphabet, Number, Shape, Toddler, Baby, Kid, Education, Magnetic Board">
+<meta name="author" content="Terry Bae">
+<meta name="mobile-web-app-capable" content="yes">   
+<meta name="viewport" content="width=device-width">	
+<link rel="stylesheet" href="../css/stylesheet.css" type="text/css" media="screen" />
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/cans.js"></SCRIPT>
+<title>CANS CANS NUMBER</title>
+<script type="text/javascript">
+var state = 0;
+var numberSound = [];
+var fObj = {};
+
+function init(){
+	draw(state);
+	
+	for(var j = 0; j < 11; j++){
+		numberSound[j] = new Audio("../sounds/numbers/" + j + ".wav");
+	}
+	
+	fObj = new Audio("../sounds/flip.wav");	
+		
+	setTimeout("readMe()",500);
+}
+
+function draw(num){
+	document.getElementById("nfc").innerHTML = "<span style='position:relative;top:150px;'>" + (num + 1).toString() + "</span><br /><span style='position:relative;top:200px;' class='smallchar'>" + numbers[num] +"</span>";
+}
+
+function readMe(){
+	numberSound[state + 1].play();
+}
+
+function outsound(){
+	setTimeout("fObj.play()",100);
+}
+
+function shift(obj){
+		if(obj.id == "leftarrow"){
+		if (state == 0 )
+		{
+			state = numbers.length - 1;
+		} else {
+			state = state - 1;
+		}
+
+	} else {
+
+		if (state == numbers.length -1 )
+		{
+			state = 0;
+		} else {
+			state = state + 1;
+		}
+	}
+	draw(state);
+	//outsound();
+	setTimeout("readMe()",200);
+}
+</script>
+<style>
+body {
+	background:#007;
+}
+</style>
+</head>
+<body onLoad="init();">
+<div id="content">
+  <ul id="nav">
+    <SCRIPT LANGUAGE="JavaScript" SRC="../js/menu.js"></SCRIPT>
+  </ul>
+  <div class="clearBoth"></div>
+  <input type="button" onclick="shift(this);" class="arrow" id="leftarrow" name="leftarrow" />
+  <div onclick="readMe();" class="flashcard" id="nfc" name="nfc" ></div>
+  <input type="button" onclick="shift(this);" class="arrow" id="rightarrow" name="rightarrow" />
+<!-- footer starts here -->
+<ul id="footer" name="footer">
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/footer.js"></SCRIPT>
+</ul>
+</div>
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/analytics.js"></SCRIPT>
+</body>
+</html>

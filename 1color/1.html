@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="CANS CANS COLOR provides Color Game, Flashcards and Color Chart.">
+<meta name="keywords" content="CANS CANS, Color, Alphabet, Number, Shape, Toddler, Baby, Kid, Education, Magnetic Board">
+<meta name="author" content="Terry Bae">
+<meta name="mobile-web-app-capable" content="yes"> 
+<meta name="viewport" content="width=device-width">	
+<link rel="stylesheet" href="../css/stylesheet.css" type="text/css" media="screen" />
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/cans.js"></SCRIPT>
+<title>CANS CANS COLOR</title>
+<script type="text/javascript">
+var angle = 5;
+var colorSound = [];
+var fObj = {};
+
+function init(){
+
+	for(var i = 0; i < 10; i++){
+		var str = String(i);
+		document.getElementById(str).style.backgroundColor = colors[i];
+	}
+	
+	for(var j = 0; j < 10; j++){
+		colorSound[j] = new Audio("../sounds/colors/" + colors[j].toLowerCase() + ".wav");
+	}
+	fObj = new Audio("../sounds/flip.wav");
+}
+
+function start(obj){
+	var me = document.getElementById(obj.id);
+
+	if (me.innerHTML == "")
+	{
+		me.style.position = "absolute";
+		me.style.top = document.getElementById("wrapper").style.top;
+		me.style.left = document.getElementById("wrapper").style.left;
+		me.style.height = "410px";
+		me.style.width = "980px";	
+		me.style.lineHeight = "410px";
+		me.style.zIndex = "50";
+		me.innerHTML = colors[obj.id];
+		angle = 0;
+
+		csound(obj.id);
+
+	} else {
+
+		me.innerHTML = "";
+		me.style.position = "relative";
+		me.style.top = "";
+		me.style.left = "";
+		me.style.height = "180px";
+		me.style.width = "180px";	
+		me.style.lineHeight = "180px";
+		me.style.zIndex = "0";
+		angle = 5;
+		outsound();
+
+	}
+}
+
+function outsound(){
+	fObj.play()
+	//setTimeout("fObj.play()",100);
+}
+
+function csound(id){
+	colorSound[id].play();
+	//setTimeout("colorSound[id].play()",100);
+}
+
+</script>
+<style>
+body {
+	background:#700;
+}
+</style>
+</head>
+<body onLoad="init();">
+<div id="content">
+  <ul id="nav">
+    <SCRIPT LANGUAGE="JavaScript" SRC="../js/menu.js"></SCRIPT>
+  </ul>
+  <div class="clearBoth"></div>
+  <div id="wrapper">
+  <div class="citem r" id="0" name="0" onclick="start(this)"></div>
+  <div class="citem r" id="1" name="1" onclick="start(this)"></div>
+  <div class="citem r" id="2" name="2" onclick="start(this)"></div>
+  <div class="citem r" id="3" name="3" onclick="start(this)"></div>
+  <div class="citem r" id="4" name="4" onclick="start(this)"></div>
+  <div class="citem r" id="5" name="5" onclick="start(this)"></div>
+  <div class="citem r" id="6" name="6" onclick="start(this)"></div>
+  <div class="citem r" id="7" name="7" onclick="start(this)"></div>
+  <div class="citem r" id="8" name="8" onclick="start(this)"></div>
+  <div class="citem r" id="9" name="9" onclick="start(this)"></div>
+  </div>
+<!-- footer starts here -->
+<ul id="footer" name="footer">
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/footer.js"></SCRIPT>
+</ul>
+</div>
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/analytics.js"></SCRIPT>
+</body>
+</html>

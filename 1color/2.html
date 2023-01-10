@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="CANS CANS COLOR provides Color Game, Flashcards and Color Chart.">
+<meta name="keywords" content="CANS CANS, Color, Alphabet, Number, Shape, Toddler, Baby, Kid, Education, Magnetic Board">
+<meta name="author" content="Terry Bae"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes"> 
+<meta name="viewport" content="width=device-width">	
+<link rel="stylesheet" href="../css/stylesheet.css" type="text/css" media="screen" />
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/cans.js"></SCRIPT>
+<title>CANS CANS COLOR</title>
+<script type="text/javascript">
+var state = 0;
+var colorSound = [];
+var fObj = {};
+
+function init(){
+	draw(state);
+	setTimeout("readMe()",500);
+	for(var j = 0; j < 10; j++){
+		colorSound[j] = new Audio("../sounds/colors/" + colors[j].toLowerCase() + ".wav");
+	}
+	fObj = new Audio("../sounds/flip.wav");	
+	
+}
+
+function draw(num){
+	document.getElementById("cfc").style.backgroundColor = colors[num];
+	document.getElementById("cfc").innerHTML = colors[num];
+}
+
+function readMe(){
+	colorSound[state].play();
+}
+
+function outsound(){
+	fObj.play();
+}
+
+function shift(obj){
+	if(obj.id == "leftarrow"){
+		if (state == 0 )
+		{
+			state = colors.length - 1;
+		} else {
+			state = state - 1;
+		}
+
+	} else {
+
+		if (state == colors.length -1 )
+		{
+			state = 0;
+		} else {
+			state = state + 1;
+		}
+	}
+	draw(state);
+	readMe();
+	//outsound();
+	//setTimeout("readMe()",500);
+}
+
+</script>
+<style>
+body {
+	background:#700;
+}
+</style>
+</head>
+<body onLoad="init();">
+<div id="content">
+  <ul id="nav">
+    <SCRIPT LANGUAGE="JavaScript" SRC="../js/menu.js"></SCRIPT>
+  </ul>
+  <div class="clearBoth"></div>
+  <input type="button" onclick="shift(this);" class="arrow" id="leftarrow" name="leftarrow" />
+  <div onclick="readMe();" class="flashcard r" id="cfc" name="cfc" ></div>
+  <input type="button" onclick="shift(this);" class="arrow" id="rightarrow" name="rightarrow" />
+<!-- footer starts here -->
+<ul id="footer" name="footer">
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/footer.js"></SCRIPT>
+</ul>
+</div>
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/analytics.js"></SCRIPT>
+</html>

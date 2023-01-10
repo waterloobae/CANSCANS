@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="CANS CANS NUMBER provides Number Game, Flashcards and 123 Chart.">
+<meta name="keywords" content="CANS CANS, Color, Alphabet, Number, Shape, Toddler, Baby, Kid, Education, Magnetic Board">
+<meta name="author" content="Terry Bae">
+<meta name="mobile-web-app-capable" content="yes">   
+<meta name="viewport" content="width=device-width">	
+<link rel="stylesheet" href="../css/stylesheet.css" type="text/css" media="screen" />
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/cans.js"></SCRIPT>
+<title>CANS CANS NUMBER</title>
+<script type="text/javascript">
+var size ="s";
+var numberSound = [];
+var fObj = {};
+
+function init(){
+
+	for(var i = 1; i < 11; i++){
+		var str = String(i);
+		document.getElementById(str).innerHTML = String(i);
+	}
+
+	for(var j = 0; j < 11; j++){
+		numberSound[j] = new Audio("../sounds/numbers/" + j + ".wav");
+	}
+	
+	fObj = new Audio("../sounds/flip.wav");	
+	
+}
+
+function start(obj){
+	var me = document.getElementById(obj.id);
+
+	if (size == "s")
+	{
+		size = "b";
+		me.style.position = "absolute";
+		me.style.top = document.getElementById("wrapper").style.top;
+		me.style.left = document.getElementById("wrapper").style.left;
+		me.style.height = "422px";
+		me.style.width = "980px";	
+		me.style.lineHeight = "422px";
+		me.style.background = "blue url(../images/fc_n_w.png) center repeat";
+		me.style.border = "10px solid white";
+		me.style.fontSize = "8em";
+		me.style.zIndex = "50";
+		document.getElementById(obj.id).innerHTML = "<span style='font-size: 300px; color: #000;'>" + obj.id + "</span> " + numbers[parseInt(obj.id) - 1];
+
+		numberSound[obj.id].play();
+
+	} else {
+
+		size ="s";
+		
+		outsound();
+		me.style.position = "relative";
+		me.style.top = "";
+		me.style.left = "";
+		me.style.height = "200px";
+		me.style.width = "200px";	
+		me.style.lineHeight = "200px";
+		me.style.border = "";
+		me.style.background = "green url(../images/button_n.png) center no-repeat";
+		me.style.fontSize = "7em";
+		me.style.zIndex = "0";
+		document.getElementById(obj.id).innerHTML = obj.id;
+	}
+}
+
+function outsound(){
+	setTimeout("fObj.play()",100);
+}
+
+</script>
+<style>
+body {
+	background:#007;
+}
+</style>
+</head>
+<body onLoad="init();">
+<div id="content">
+  <ul id="nav">
+    <SCRIPT LANGUAGE="JavaScript" SRC="../js/menu.js"></SCRIPT>
+  </ul>
+  <div class="clearBoth"></div>
+  <div id="wrapper">
+  <div class="nitem r" id="1" name="1" onclick="start(this)"></div>
+  <div class="nitem r" id="2" name="2" onclick="start(this)"></div>
+  <div class="nitem r" id="3" name="3" onclick="start(this)"></div>
+  <div class="nitem r" id="4" name="4" onclick="start(this)"></div>
+  <div class="nitem r" id="5" name="5" onclick="start(this)"></div>
+  <div class="nitem r" id="6" name="6" onclick="start(this)"></div>
+  <div class="nitem r" id="7" name="7" onclick="start(this)"></div>
+  <div class="nitem r" id="8" name="8" onclick="start(this)"></div>
+  <div class="nitem r" id="9" name="9" onclick="start(this)"></div>
+  <div class="nitem r" id="10" name="10" onclick="start(this)"></div>
+  </div>
+<!-- footer starts here -->
+<ul id="footer" name="footer">
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/footer.js"></SCRIPT>
+</ul>
+</div>
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/analytics.js"></SCRIPT>
+</body>
+</html>

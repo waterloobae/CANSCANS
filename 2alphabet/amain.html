@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="CANS CANS ALPHABET provides Alphabet Game, Flashcards and ABC Chart.">
+<meta name="keywords" content="CANS CANS, Color, Alphabet, Number, Shape, Toddler, Baby, Kid, Education, Magnetic Board">
+<meta name="author" content="Terry Bae">
+<meta name="mobile-web-app-capable" content="yes">   
+<meta name="viewport" content="width=device-width">	
+<link rel="stylesheet" href="../css/stylesheet.css" type="text/css" media="screen" />
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/cans.js"></SCRIPT>
+<title>CANS CANS ALPHABET</title>
+<script type="text/javascript">
+function init(){
+
+}
+</script>
+<style>
+body {
+	background:#070;
+}
+</style>
+</head>
+<body onLoad="init()">
+<div id="content">
+  <ul id="nav">
+    <SCRIPT LANGUAGE="JavaScript" SRC="../js/menu.js"></SCRIPT>
+    <audio id="menusound" name="menusound">
+      <source src="../sounds/menu.wav">
+    </audio>
+  </ul>
+  <div class="asmallbutton" id="button3" name="button3" ontouchstart="gotoNext(this);" onclick="gotoNext(this);">Alphabet Game</div>
+  <div class="asmallbutton" id="button2" name="button2" ontouchstart="gotoNext(this);" onclick="gotoNext(this);">Flashcards</div>
+  <div class="asmallbutton" id="button1" name="button1" ontouchstart="gotoNext(this);" onclick="gotoNext(this);">ABC Chart</div>
+  <audio id="spinsound" name="spinsound">
+    <source src="../sounds/chimesSpin.wav">
+  </audio>
+<!-- footer starts here -->
+<ul id="footer" name="footer">
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/footer.js"></SCRIPT>
+</ul>
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/analytics.js"></SCRIPT>
+</div>
+</body>
+</html>

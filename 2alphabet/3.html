@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="CANS CANS ALPHABET provides Alphabet Game, Flashcards and ABC Chart.">
+<meta name="keywords" content="CANS CANS, Color, Alphabet, Number, Shape, Toddler, Baby, Kid, Education, Magnetic Board">
+<meta name="author" content="Terry Bae">
+<meta name="mobile-web-app-capable" content="yes">   
+<meta name="viewport" content="width=device-width">	
+<link rel="stylesheet" href="../css/stylesheet.css" type="text/css" media="screen" />
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/cans.js"></SCRIPT>
+<title>CANS CANS ALPHABET</title>
+<script type="text/javascript">
+	var ans = 0;
+	var wans1 = 0;
+	var wans2 = 0;
+	var wans3 = 0;
+	
+	var cans = 0;
+	var cwans1 = 0;
+	var cwans2 = 0;
+	var cwans3 = 0;
+
+	var alphaSound = [];
+
+	var rObj = {};
+	var wObj = {};
+	var oObj = {};
+
+function gen(){
+
+	ans = Math.floor(Math.random() * (alphabets.length - 1));
+	do {	wans1 = Math.floor(Math.random() * (alphabets.length - 1)); }while (wans1 == ans);
+	do {	wans2 = Math.floor(Math.random() * (alphabets.length - 1)); }while (wans2 == ans || wans2 == wans1);
+	do {	wans3 = Math.floor(Math.random() * (alphabets.length - 1)); }while (wans3 == ans || wans3 == wans1 || wans3 == wans2);	
+		 
+	cans = Math.floor(Math.random() * 4);
+	do {	cwans1 = Math.floor(Math.random() * 4); }while (cwans1 == cans);
+	do {	cwans2 = Math.floor(Math.random() * 4); }while (cwans2 == cans || cwans2 == cwans1);
+	do {	cwans3 = Math.floor(Math.random() * 4); }while (cwans3 == cans || cwans3 == cwans1 || cwans3 == cwans2);
+
+	document.getElementById(cans).innerHTML = alphabets[ans];
+	document.getElementById(cwans1).innerHTML = alphabets[wans1];
+	document.getElementById(cwans2).innerHTML = alphabets[wans2];
+	document.getElementById(cwans3).innerHTML = alphabets[wans3];
+	
+	readMe();
+}
+
+function readMe(){
+	setTimeout("alphasound()",500);
+}
+	
+function init(){
+	gen();
+	
+	for(var j = 0; j < 26; j++){
+		alphaSound[j] = new Audio("../sounds/alphabet/" + alphabets[j].toLowerCase() + ".wav");
+	}
+		
+	rObj = new Audio("../sounds/audience.wav");
+	wObj = new Audio("../sounds/uh-oh.wav");
+	oObj = new Audio("../sounds/flip.wav");		
+}
+
+function mark(obj) {
+	document.getElementsByTagName("audio").stop;
+	if(obj.id == cans) {
+		obj.style.color = "#00f";
+		obj.innerHTML = "O";
+		rsound();
+		setTimeout("gen()",5000);
+		setTimeout("outsound()",5000);
+
+	} else {
+		obj.style.color = "#f00";
+		obj.innerHTML = "X";
+		wsound();
+	}
+	setTimeout("clear()",5000);
+}
+
+function clear() {
+
+	document.getElementById(cans).style.color = "#fff";
+	document.getElementById(cwans1).style.color = "#fff";
+	document.getElementById(cwans2).style.color = "#fff";
+	document.getElementById(cwans3).style.color = "#fff";
+
+	document.getElementById(cans).innerHTML = alphabets[ans];
+	document.getElementById(cwans1).innerHTML = alphabets[wans1];
+	document.getElementById(cwans2).innerHTML = alphabets[wans2];
+	document.getElementById(cwans3).innerHTML = alphabets[wans3];
+}
+
+function alphasound(){
+	alphaSound[ans].play();
+}
+
+function rsound(){
+	setTimeout("rObj.play()",100);
+}
+
+function wsound(){
+	setTimeout("wObj.play()",100);
+}
+
+function outsound(){
+	oObj.play();
+}
+</script>
+<style>
+body {
+	background:#070;
+}
+</style>
+</head>
+<body onLoad="init()">
+<div id="content">
+  <ul id="nav">
+    <SCRIPT LANGUAGE="JavaScript" SRC="../js/menu.js"></SCRIPT>
+  </ul>
+  <div class="clearBoth"></div>
+  <div class="awrapper">
+    <div class="aanswers r" id="0" name="0" onclick="mark(this);"></div>
+    <div class="aanswers r" id="1" name="1" onclick="mark(this);"></div>
+  </div>
+  <div class="mflashcard" id="afc" name="afc" onclick="readMe();"><br />
+    <br />
+    Tap/Click here<br />
+    <br />
+    to listen to <br />
+    <br />
+    <img src="../images/speaker.png" align="middle"></div>
+  <div class="awrapper">
+    <div class="aanswers r" id="2" name="2" onclick="mark(this);"></div>
+    <div class="aanswers r" id="3" name="3" onclick="mark(this);"></div>
+  </div>
+<!-- footer starts here -->
+<ul id="footer" name="footer">
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/footer.js"></SCRIPT>
+</ul>
+</div>
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/analytics.js"></SCRIPT>
+</body>
+</html>

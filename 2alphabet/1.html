@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="CANS CANS ALPHABET provides Alphabet Game, Flashcards and ABC Chart.">
+<meta name="keywords" content="CANS CANS, Color, Alphabet, Number, Shape, Toddler, Baby, Kid, Education, Magnetic Board">
+<meta name="author" content="Terry Bae">
+<meta name="mobile-web-app-capable" content="yes">   
+<meta name="viewport" content="width=device-width">	
+<link rel="stylesheet" href="../css/stylesheet.css" type="text/css" media="screen" />
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/cans.js"></SCRIPT>
+<title>CANS CANS ALPHABET</title>
+<script type="text/javascript">
+var size ="s";
+var alphaSound = [];
+var fObj = {};
+
+function init(){
+
+	for(var i = 0; i < 26; i++){
+		var str = String(i);
+		document.getElementById(str).innerHTML = alphabets[i] + "<span class='smallchar'>" + alphabets[i].toLowerCase() + "</span>";
+	}
+	
+	for(var j = 0; j < 26; j++){
+		alphaSound[j] = new Audio("../sounds/alphabet/" + alphabets[j].toLowerCase() + ".wav");
+	}
+	
+	fObj = new Audio("../sounds/flip.wav");
+}
+
+function start(obj){
+	var me = document.getElementById(obj.id);
+
+	if (size == "s")
+	{
+		size = "b";
+		me.style.position = "absolute";
+		me.style.top = document.getElementById("wrapper").style.top;
+		me.style.left = document.getElementById("wrapper").style.left;
+		me.style.height = "422px";
+		me.style.width = "980px";	
+		me.style.lineHeight = "422px";
+		me.style.background = "green url(../images/fc_a_w.png) center repeat";
+		me.style.border = "10px solid white";
+		me.style.fontSize = "20em";
+		me.style.zIndex = "50";
+		document.getElementById(obj.id).innerHTML = alphabets[obj.id] + "<span class='midchar'>" + alphabets[obj.id].toLowerCase() + "</span>";
+
+		alphaSound[obj.id].play();
+		//setTimeout("alphaSound[obj.id].play()",250);
+
+	} else {
+
+		size ="s";
+
+		osound();
+		me.style.position = "relative";
+		me.style.top = "";
+		me.style.left = "";
+		me.style.height = "200px";
+		me.style.width = "200px";	
+		me.style.lineHeight = "200px";
+		me.style.border = "";
+		me.style.background = "green url(../images/button_a.png) center no-repeat";
+		me.style.fontSize = "7em";
+		me.style.zIndex = "0";
+		document.getElementById(obj.id).innerHTML = alphabets[obj.id] + "<span class='smallchar'>" + alphabets[obj.id].toLowerCase() + "</span>";
+	}
+}
+
+function osound(){
+	setTimeout("fObj.play()",100);
+}
+
+function showNext(obj){
+
+	setTimeout("fObj.play()",100);
+	
+	if(obj.id == "b1" || obj.id == "b4"){
+		document.getElementById("box1").style.display = "none";
+		document.getElementById("box2").style.display = "block";
+		document.getElementById("box3").style.display = "none";
+	} else if(obj.id == "b2"){
+		document.getElementById("box1").style.display = "block";
+		document.getElementById("box2").style.display = "none";
+		document.getElementById("box3").style.display = "none";
+	} else {
+		document.getElementById("box1").style.display = "none";
+		document.getElementById("box2").style.display = "none";
+		document.getElementById("box3").style.display = "block";	
+	}
+		
+}
+
+</script>
+<style>
+body {
+	background:#070;
+}
+</style>
+</head>
+<body onLoad="init();">
+<div id="content">
+  <ul id="nav">
+    <SCRIPT LANGUAGE="JavaScript" SRC="../js/menu.js"></SCRIPT>
+  </ul>
+  <div class="clearBoth"></div>
+  <div id="wrapper">
+  <div id="box1" name="box1">
+    <div class="aitem r" id="0" name="0" onclick="start(this)"></div>
+    <div class="aitem r" id="1" name="1" onclick="start(this)"></div>
+    <div class="aitem r" id="2" name="2" onclick="start(this)"></div>
+    <div class="aitem r" id="3" name="3" onclick="start(this)"></div>
+    <div class="aitem r" id="4" name="4" onclick="start(this)"></div>
+    <div class="aitem r" id="5" name="5" onclick="start(this)"></div>
+    <div class="aitem r" id="6" name="6" onclick="start(this)"></div>
+    <div class="aitem r" id="7" name="7" onclick="start(this)"></div>
+    <div class="aitem r" id="8" name="8" onclick="start(this)"></div>
+    <input type="button" class="srarrow" id="b1" name="b1" onclick="showNext(this)" />
+  </div>
+  <div id="box2" name="box2">
+    <input type="button" class="slarrow" id="b2" name="b2" onclick="showNext(this)" />
+    <div class="aitem r" id="9" name="9" onclick="start(this)"></div>
+    <div class="aitem r" id="10" name="10" onclick="start(this)"></div>
+    <div class="aitem r" id="11" name="11" onclick="start(this)"></div>
+    <div class="aitem r" id="12" name="12" onclick="start(this)"></div>
+    <div class="aitem r" id="13" name="13" onclick="start(this)"></div>
+    <div class="aitem r" id="14" name="14" onclick="start(this)"></div>
+    <div class="aitem r" id="15" name="15" onclick="start(this)"></div>
+    <div class="aitem r" id="16" name="16" onclick="start(this)"></div>
+    <input type="button" class="srarrow" id="b3" name="b3" onclick="showNext(this)" />
+  </div>
+  <div id="box3" name="box3">
+    <input type="button" class="slarrow" id="b4" name="b4" onclick="showNext(this)" />
+    <div class="aitem r" id="17" name="17" onclick="start(this)"></div>
+    <div class="aitem r" id="18" name="18" onclick="start(this)"></div>
+    <div class="aitem r" id="19" name="19" onclick="start(this)"></div>
+    <div class="aitem r" id="20" name="20" onclick="start(this)"></div>
+    <div class="aitem r" id="21" name="21" onclick="start(this)"></div>
+    <div class="aitem r" id="22" name="22" onclick="start(this)"></div>
+    <div class="aitem r" id="23" name="23" onclick="start(this)"></div>
+    <div class="aitem r" id="24" name="24" onclick="start(this)"></div>
+    <div class="aitem r" id="25" name="25" onclick="start(this)"></div>
+  </div>
+  </div>
+<!-- footer starts here -->
+<ul id="footer" name="footer">
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/footer.js"></SCRIPT>
+</ul>
+</div>
+<SCRIPT LANGUAGE="JavaScript" SRC="../js/analytics.js"></SCRIPT>
+</body>
+</html>

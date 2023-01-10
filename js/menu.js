@@ -1,0 +1,14 @@
+document.write('<li id="hmenu2" name="hmenu2" ontouchstart="gotoNext(this)" onclick="gotoNext(this)"><strong>H</strong>ome</li>');
+document.write('<li id="cmenu2" name="cmenu2" ontouchstart="gotoNext(this)" onclick="gotoNext(this)"><strong>C</strong>olour</li>');
+document.write('<li id="amenu2" name="amenu2" ontouchstart="gotoNext(this)" onclick="gotoNext(this)"><strong>A</strong>lphabet</li>');
+document.write('<li id="nmenu2" name="nmenu2" ontouchstart="gotoNext(this)" onclick="gotoNext(this)"><strong>N</strong>umber</li>');
+document.write('<li id="smenu2" name="smenu2" ontouchstart="gotoNext(this)" onclick="gotoNext(this)"><strong>S</strong>hape</li>');
+document.write('<li id="bmenu2" name="bmenu2" ontouchstart="gotoNext(this)" onclick="gotoNext(this)"><strong>M</strong>ag. Board</li>');
+document.write('<li>');
+document.write('<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">');
+document.write('<input type="hidden" name="cmd" value="_s-xclick">');
+document.write('<input type="hidden" name="hosted_button_id" value="77T5EAD3SMKDU">');
+document.write('<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">');
+document.write('<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">');
+document.write('</form>');
+document.write('</li>');
