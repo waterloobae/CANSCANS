@@ -1,4 +1,4 @@
-document.write('<li ><a href="http://blog.canscans.com" ><strong>B</strong>log</a></li>');
+document.write('<li ><a href="https://waterloomath.com/blog" ><strong>B</strong>log</a></li>');
 /***
 document.write('<li id="goback" name="goback" ontouchstart="gotoNext(this)" onclick="gotoNext(this)"><strong>B</strong>ack</li>');
 document.write('<li>');
